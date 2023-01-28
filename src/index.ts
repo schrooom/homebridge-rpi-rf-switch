@@ -58,6 +58,7 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
 
     const gpio = config.gpio || 17;
     const repeat = config.repeat || 10;
+    const resetTime = config.resetSwitchTime || 0;
 
     const rpiRf = python.importSync('rpi_rf');
     try {
