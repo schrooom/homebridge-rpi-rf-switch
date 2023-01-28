@@ -178,20 +178,24 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
     if (service) {
       service.getCharacteristic(hap.Characteristic.On).on(
         'set',
-        this.setPowerState.bind(this, accessory, () => {
-          if (this.resetTime > 0) {
-            this.log(
-              "Resetting platform accessory '" +
-                accessory.context.name +
-                "' in " +
-                this.resetTime +
-                'ms...'
-            )
-            setTimeout(() => {
-              service.setCharacteristic(hap.Characteristic.On, false)
-            }, this.resetTime)
+        this.setPowerState.bind(
+          this,
+          accessory,
+          (callback: CharacteristicSetCallback) => {
+            if (this.resetTime > 0) {
+              this.log(
+                "Resetting platform accessory '" +
+                  accessory.context.name +
+                  "' in " +
+                  this.resetTime +
+                  'ms...'
+              )
+              setTimeout(() => {
+                service.setCharacteristic(hap.Characteristic.On, false)
+              }, this.resetTime)
+            }
           }
-        })
+        )
       )
     }
 
