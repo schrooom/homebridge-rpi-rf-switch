@@ -181,7 +181,7 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
         state: CharacteristicValue,
         callback: CharacteristicSetCallback
       ) => {
-        this.setPowerState.bind(accessory, state, callback)
+        this.setPowerState(accessory, state, callback)
         if (this.resetTime > 0) {
           this.log(
             "Resetting platform accessory '" +
