@@ -186,6 +186,7 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
           this.setPowerState(accessory, value, callback)
           if ((accessory.context.resetSwitchTime || 0) > 0) {
             setTimeout(() => {
+              this.isAutoResetting = true
               service.setCharacteristic(hap.Characteristic.On, false)
             }, accessory.context.resetSwitchTime)
           }
