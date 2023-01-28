@@ -72,6 +72,12 @@
                             "type": "integer",
                             "placeholder": 24,
                             "description": "RF code length."
+                        },
+                        "resetTime": {
+                            "title": "Reset Switch Time",
+                            "type": "integer",
+                            "placeholder": 0,
+                            "description": "Reset switch after set time if greater than 0."
                         }
                     }
                 }
