@@ -33,7 +33,6 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
   private readonly accessories: Array<PlatformAccessory>
   private readonly commandQueue: Array<Command>
   private readonly rfDevice: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  private readonly resetTime: number
   private isAutoResetting: boolean = false
   private transmitting: boolean
 
@@ -60,7 +59,6 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
 
     const gpio = config.gpio || 17
     const repeat = config.repeat || 10
-    this.resetTime = config.resetSwitchTime || 0
 
     const rpiRf = python.importSync('rpi_rf')
     try {
@@ -186,10 +184,10 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
             return
           }
           this.setPowerState(accessory, value, callback)
-          if (this.resetTime > 0) {
+          if ((accessory.context.resetSwitchTime || 0) > 0) {
             setTimeout(() => {
               service.setCharacteristic(hap.Characteristic.On, false)
-            }, this.resetTime)
+            }, accessory.context.resetSwitchTime)
           }
         })
     }
