@@ -29,7 +29,8 @@ Edit your `config.json` accordingly. Configuration sample:
     }, {
         "name" : "Outlet 2",
         "on_code":  379952729,
-        "off_code": 379953500
+        "off_code": 379953500,
+        "resetSwitchTime" : 1000
     }]
 }]
 ```
@@ -47,7 +48,7 @@ Edit your `config.json` accordingly. Configuration sample:
 | \|- pulselength    | RF code pulse length. (Default: 350)                                         | No       |
 | \|- protocol       | RF code protocol. (Default: 1)                                               | No       |
 | \|- codelength     | RF code length. (Default: 24)                                                | No       |
-| \|- resetSwitchTime| Reset switch state (for stateless devices). (Default: 0)                     | No       |
+| \|- resetSwitchTime| Time to auto-reset switch state to off (for stateless devices). (Default: 0) | No       |
 
 ### Note on Getting RF Codes
 
