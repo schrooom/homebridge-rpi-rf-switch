@@ -73,7 +73,7 @@
                             "placeholder": 24,
                             "description": "RF code length."
                         },
-                        "resetTime": {
+                        "resetSwitchTime": {
                             "title": "Reset Switch Time",
                             "type": "integer",
                             "placeholder": 0,
