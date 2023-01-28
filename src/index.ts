@@ -33,7 +33,6 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
   private readonly accessories: Array<PlatformAccessory>
   private readonly commandQueue: Array<Command>
   private readonly rfDevice: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  private isAutoResetting: boolean = false
   private transmitting: boolean
 
   constructor(log: Logging, config: PlatformConfig, api: API) {
@@ -178,16 +177,12 @@ class RfSwitchPlatform implements DynamicPlatformPlugin {
       service
         .getCharacteristic(hap.Characteristic.On)
         .on('set', (value: any, callback: any) => {
-          if (this.isAutoResetting) {
-            // dont pass state to device when resetting switch-state
-            this.isAutoResetting = false
-            return
-          }
           this.setPowerState(accessory, value, callback)
           if ((accessory.context.resetSwitchTime || 0) > 0) {
             setTimeout(() => {
-              this.isAutoResetting = true
-              service.setCharacteristic(hap.Characteristic.On, false)
+              service
+                .getCharacteristic(hap.Characteristic.On)
+                .updateValue(false)
             }, accessory.context.resetSwitchTime)
           }
         })
