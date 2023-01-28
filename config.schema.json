@@ -74,7 +74,7 @@
                             "description": "RF code length."
                         },
                         "resetSwitchTime": {
-                            "title": "Reset Switch Time",
+                            "title": "Reset Switch Time in milliseconds",
                             "type": "integer",
                             "placeholder": 0,
                             "description": "Reset switch after set time if greater than 0."
