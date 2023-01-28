@@ -47,6 +47,7 @@ Edit your `config.json` accordingly. Configuration sample:
 | \|- pulselength    | RF code pulse length. (Default: 350)                                         | No       |
 | \|- protocol       | RF code protocol. (Default: 1)                                               | No       |
 | \|- codelength     | RF code length. (Default: 24)                                                | No       |
+| \|- resetSwitchTime| Reset switch state (for stateless devices). (Default: 0)                     | No       |
 
 ### Note on Getting RF Codes
 
