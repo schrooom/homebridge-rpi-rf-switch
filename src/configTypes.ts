@@ -15,4 +15,5 @@ export type DeviceConfig = {
   pulseLength?: number;
   protocol?: number;
   codelength?: number;
+  resetSwitchTime?: number;
 };
